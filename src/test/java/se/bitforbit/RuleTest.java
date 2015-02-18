@@ -11,10 +11,11 @@ public class RuleTest {
 
 
 
-        Action a = new Action(){
+        Action<String> a = new Action<String>(){
+
 
             @Override
-            public void execute() {
+            public void executeFor(RuleCode ruleCode, String objectThatConditionsWhereNotMet) {
 
             }
 
@@ -37,8 +38,8 @@ public class RuleTest {
         }
 
         @Override
-        public boolean isMetFor(String objectToCheck) {
-            return objectToCheck != null && objectToCheck.length() <= maxLength;
+        public boolean isNotMetFor(String objectToCheck) {
+            return objectToCheck == null || objectToCheck.length() > maxLength;
         }
 
         @Override
